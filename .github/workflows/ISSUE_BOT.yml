@@ -1,11 +1,11 @@
-name: Weekly Team Sync
+name: Weekly Study
 on:
   schedule:
     - cron: 0,5,10,15,20,25,30,35,40,45,50,55 * * * *
 
 jobs:
   create_issue:
-    name: Create team sync issue
+    name: Create Weekly Study
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -14,7 +14,7 @@ jobs:
         run: echo "MONTH=$(date +'%m')" >> $GITHUB_ENV
       - name: Get Week
         run: echo "WEEK=$((($(date +%-d)-1)/7+1))" >> $GITHUB_ENV
-      - name: Create team sync issue
+      - name: Create Weekly Study
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "zestlee1106"
