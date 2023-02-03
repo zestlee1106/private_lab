@@ -10,14 +10,16 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Get Title with Date
-        run: echo "TITLE=$(0$(date '-%m')월 0$((($(date +%-d)-1)/7+1))주차)" >> $GITHUB_ENV
+      - name: Get Month
+        run: echo "MONTH=$(date +'%m')" >> $GITHUB_ENV
+      - name: Get Week
+        run: echo "WEEK=$((($(date +%-d)-1)/7+1))" >> $GITHUB_ENV
       - name: Create team sync issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "zestlee1106"
           labels: "js, 강의"
-          title: "[{{assignees}}] ${{ env.TITLE }}"
+          title: "[{{assignees}}] ${{ env.MONTH }}월 ${{WEEK}}주차"
           body: |
             - [ ] todo
             - [ ] todo
