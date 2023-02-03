@@ -1,0 +1,26 @@
+name: Weekly Team Sync
+on:
+  schedule:
+    - cron: 0,30,35,40 * * * *
+
+jobs:
+  create_issue:
+    name: Create team sync issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create team sync issue
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          assignees: "zestlee1106"
+          labels: "js, 강의"
+          title: "[홍길동] 00월 00주차"
+          body: |
+            - [ ] todo
+            - [ ] todo
+            - [ ] todo
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.YOUNGPA_SCHEDULE }}
