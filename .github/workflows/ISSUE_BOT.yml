@@ -19,7 +19,7 @@ jobs:
         with:
           assignees: "zestlee1106"
           labels: "js, 강의"
-          title: "[{{assignees}}] ${{ env.MONTH }}월 ${{env.WEEK}}주차"
+          title: "[{{#each assignees}}] ${{ env.MONTH }}월 ${{env.WEEK}}주차"
           body: |
             - [ ] todo
             - [ ] todo
